@@ -97,6 +97,7 @@ html .body .gala {
 }
 .gala h2.titular{
     color: #000000 !important;
+    font-weight: normal;
     font-family: 'Max Offc Extlight', Helvetica, Arial, sans-serif !important;
 }
 .gala #portlet_ArticleTitle_INSTANCE_cpRQ33Uv96QD h2.titular{
