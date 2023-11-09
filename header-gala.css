@@ -872,6 +872,9 @@ html #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z #submenucontainer {
 #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z section.grid-container:last-of-type>article.grid-item:first-of-type{
     border-left: #FFFFFF;
 }
+#portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z section.grid-container:last-of-type>article.grid-item:last-of-type{
+    border-right: #FFFFFF;
+}
 #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z section.grid-container:last-of-type>article.grid-item p:first-of-type{
     font-size: 40px !important;
     line-height: 52px !important;
