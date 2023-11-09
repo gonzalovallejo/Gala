@@ -710,7 +710,7 @@ section.materialidad p{
   margin: 0 auto;
 }
 .tabla-sostenibilidad td {
-  width: 50%;
+  width: 71%;
   padding: 10px;
   text-align: center;
 }
@@ -1238,6 +1238,8 @@ html .gala .highlighted-slider-image-0-_HighlightedSlide_INSTANCE_2QRzIPM4ACmP_{
     height: 660px;
 }
 
-
+#portlet_HighlightedSlide_INSTANCE_HMR5dXXMwE5c .cabecera-destacada .jumbotron{
+    height: 660px;
+}
 
 </style>
