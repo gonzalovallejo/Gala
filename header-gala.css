@@ -838,7 +838,7 @@ html #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z #submenucontainer {
     justify-content: center;
 }
 #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z section.textunico:first-of-type article.titular p:first-of-type{
-    font-size: 30px;
+    font-size: 30px !important;
     line-height: 39px !important;
     color: #5498b1;
     font-weight: bold;
@@ -879,8 +879,8 @@ html #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z #submenucontainer {
     border-left: #FFFFFF;
 }
 #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z section.grid-container:last-of-type>article.grid-item p:first-of-type{
-    font-size: 40px;
-    line-height: 52px;
+    font-size: 40px !important;
+    line-height: 52px !important;
     color: #5498b1;
     font-weight: bold;
     margin-bottom: 6%;
