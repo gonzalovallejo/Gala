@@ -1225,4 +1225,15 @@ html .gala .highlighted-slider-image-0-_HighlightedSlide_INSTANCE_2QRzIPM4ACmP_{
 .gala #_HighlightedSlide_INSTANCE_JIJUWrWhZ8IF_cabecera-destacada h1, .gala #_HighlightedSlide_INSTANCE_v1l4EVoR65Ga_cabecera-destacada h1{
     margin-bottom: 100px;
 }
+/*Modificación del texto del article text encima de las fotos de los grifos (main-sostenibilidad)*/
+#portlet_ArticleText_INSTANCE_Mk9th0CbGlyG p{
+    font-family: 'Max Offc Extlight', Helvetica, Arial, sans-serif !important;
+    font-size: 22px;
+    line-height: 29px;
+}
+
+
+
+
+
 </style>
