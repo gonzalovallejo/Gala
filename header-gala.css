@@ -94,7 +94,7 @@ html .body .gala {
     color: #5498B1 !important;
     text-transform: none !important;
 }
-.gala h2 .gala #portlet_ArticleTitle_INSTANCE_xyTcWTkHkZ7Q h2 {
+.gala h2, .gala #portlet_ArticleTitle_INSTANCE_xyTcWTkHkZ7Q h2 {
     font-size: 40px !important;
     line-height: 52px !important;
     font-family: 'Max Offc Extrabold', Helvetica, Arial, sans-serif !important;
@@ -106,7 +106,7 @@ html .body .gala {
     font-weight: normal;
     font-family: 'Max Offc Extlight', Helvetica, Arial, sans-serif !important;
 }
-.gala #portlet_ArticleTitle_INSTANCE_cpRQ33Uv96QD h2.titular{
+.gala #portlet_ArticleTitle_INSTANCE_cpRQ33Uv96QD h2.titular, .gala #portlet_ArticleTitle_INSTANCE_y41Psce5COai h2.titular{
     color: #000000 !important;
     font-family: 'Max Offc Extlight', Helvetica, Arial, sans-serif !important;
     font-size: 40px !important;
@@ -1249,11 +1249,11 @@ html .gala .highlighted-slider-image-0-_HighlightedSlide_INSTANCE_2QRzIPM4ACmP_{
 /*Cambio tamaños highlighted sliders*/
 
 #portlet_HighlightedSlide_INSTANCE_RbFeaSDPAzI3 .cabecera-destacada .jumbotron{
-    height: 660px;
+    height: 695px;
 }
 
 #portlet_HighlightedSlide_INSTANCE_HMR5dXXMwE5c .cabecera-destacada .jumbotron{
-    height: 660px;
+    height: 773px;
 }
 
 </style>
