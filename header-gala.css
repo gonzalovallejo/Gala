@@ -870,6 +870,7 @@ html #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z #submenucontainer {
 #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z section.grid-container:last-of-type>article.grid-item:first-of-type{
     border-left: #FFFFFF;
 }
+/*Eliminación del borde derecho del nº 4 de proyectos de eficiencia energética */
 #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z section.grid-container:last-of-type>article.grid-item:last-of-type{
     border-right: #FFFFFF !important;
 }
@@ -880,6 +881,8 @@ html #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z #submenucontainer {
     font-weight: bold;
     margin-bottom: 6%;
     font-family: 'Max Offc Extrabold', Helvetica, Arial, sans-serif !important;
+/*  Reducción del margin top de los números */
+    margin-top: 10px;
 }
 #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z section.grid-container:last-of-type>article.grid-item p:nth-of-type(2){
     font-size: 14px;
