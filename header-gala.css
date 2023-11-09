@@ -81,6 +81,22 @@ html .body .gala {
 }
 
 .gala h2, .gala #portlet_ArticleTitle_INSTANCE_xyTcWTkHkZ7Q h2, .gala #portlet_ArticleTitle_INSTANCE_aq761CS1NABm h2 {
+.gala #portlet_ArticleTitle_INSTANCE_gWdCnSnHbZX5 h2 {
+    font-size: 40px !important;
+    line-height: 52px !important;
+    font-family: 'Max Offc Extrabold', Helvetica, Arial, sans-serif !important;
+    color: #5498B1 !important;
+    text-transform: none !important;
+}
+.gala #portlet_ArticleTitle_INSTANCE_aq761CS1NABm h2 {
+    font-size: 40px !important;
+    line-height: 52px !important;
+    font-family: 'Max Offc Extrabold', Helvetica, Arial, sans-serif !important;
+    color: #5498B1 !important;
+    text-transform: none !important;
+}
+.gala h2 .gala #portlet_ArticleTitle_INSTANCE_xyTcWTkHkZ7Q h2 {
+>>>>>>> 39943013048b7232729fe38d68143db6b547bb8c
     font-size: 40px !important;
     line-height: 52px !important;
     font-family: 'Max Offc Extrabold', Helvetica, Arial, sans-serif !important;
