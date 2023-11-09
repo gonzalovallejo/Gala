@@ -220,6 +220,14 @@ html .body .gala {
 .footer{
 background-color: #2C2C2C;
 }
+.footer-institutional__link{
+    color: #5498B1 !important;
+    font-size: 13px !important;
+}
+.footer-institutional__copy{
+    color: #5498B1 !important;
+    font-size: 13px !important; 
+}
 /*.slider-content h2 {
     color: white !important;
     font-size:  1em !important;
