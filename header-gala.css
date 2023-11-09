@@ -86,11 +86,12 @@ html .body .gala {
     color: #5498B1 !important;
     text-transform: none !important;
 }
-.gala #portlet_ArticleTitle_INSTANCE_cpRQ33Uv96QD h2.titular, .gala #portlet_ArticleTitle_INSTANCE_y41Psce5COai h2.titular{
+.gala #portlet_ArticleTitle_INSTANCE_cpRQ33Uv96QD h2.titular, .gala #portlet_ArticleTitle_INSTANCE_FVRt9pJJXe3Z h2.titular, .gala #portlet_ArticleTitle_INSTANCE_y41Psce5COai h2.titular{
     color: #000000 !important;
     font-family: 'Max Offc Extlight', Helvetica, Arial, sans-serif !important;
     font-size: 40px !important;
     line-height: 52px !important;
+    font-weight: normal;
 }
 .gala .slider-content>h2{
     color: #FFFFFF !important;
@@ -215,6 +216,9 @@ html .body .gala {
     font-family: 'Max Offc ExtraBold' !important;
     text-transform: uppercase;
     color: white;
+}
+.footer{
+background-color: #2C2C2C;
 }
 /*.slider-content h2 {
     color: white !important;
