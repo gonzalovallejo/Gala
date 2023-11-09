@@ -797,7 +797,6 @@ html #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z #submenucontainer {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    margin-bottom: 10%;
 }
 #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z section.grid-container>article.grid-item{
     display: flex;
