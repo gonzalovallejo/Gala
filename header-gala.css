@@ -529,7 +529,6 @@ html .gala .text-simple .titular h2 {
 
     #uppertupper{
         font-size: 40px !important;
-        font-weight: bold !important;
         margin-bottom: 4%;
     }
     .distribuidor-dos-columnas .tarjeta-blog .content-wrapper p{
@@ -541,7 +540,6 @@ html .gala .text-simple .titular h2 {
     #newtitle{
         font-family: 'Max Offc Extlight', Helvetica, Arial, sans-serif !important;
         font-size: 40px !important;
-        font-weight: bold !important;
         margin: 0px !important;
         line-height: 52px !important;
         max-width: 900px !important;
