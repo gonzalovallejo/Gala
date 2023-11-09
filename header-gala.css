@@ -529,7 +529,7 @@ html .gala .text-simple .titular h2 {
         }
         .text-simple .titular .image{
             display: flex;
-            flex: 1;
+            flex: 2;
             flex-wrap: wrap;
             min-width: 250px;
         }
