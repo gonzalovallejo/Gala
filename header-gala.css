@@ -217,6 +217,11 @@ html .body .gala {
     text-transform: uppercase;
     color: white;
 }
+.footer__lists a{
+    font-family: 'Max Offc ExtraBold' !important;
+    text-transform: uppercase;
+    color: white;
+}
 .footer{
 background-color: #2C2C2C;
 }
