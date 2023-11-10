@@ -215,12 +215,12 @@ html .body .gala {
 .footer__lists h2 a{
     font-family: 'Max Offc ExtraBold' !important;
     text-transform: uppercase;
-    color: white;
+    color: white !important;
 }
 .footer__lists a{
     font-family: 'Max Offc ExtraBold' !important;
-    text-transform: uppercase;
-    color: white;
+    text-transform: capitalize;
+    color: white !important;
 }
 .footer{
 background-color: #2C2C2C;
