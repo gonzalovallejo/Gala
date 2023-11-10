@@ -215,10 +215,23 @@ html .body .gala {
 .footer__lists h2 a{
     font-family: 'Max Offc ExtraBold' !important;
     text-transform: uppercase;
-    color: white;
+    color: white !important;
+}
+.footer__lists a{
+    font-family: 'Max Offc ExtraBold' !important;
+    text-transform: capitalize;
+    color: white !important;
 }
 .footer{
 background-color: #2C2C2C;
+}
+.footer-institutional__link{
+    color: #5498B1 !important;
+    font-size: 13px !important;
+}
+.footer-institutional__copy{
+    color: #5498B1 !important;
+    font-size: 13px !important; 
 }
 /*.slider-content h2 {
     color: white !important;
