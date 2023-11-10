@@ -185,6 +185,8 @@ html .body .gala {
 }
 #_BasicDistributor_INSTANCE_eS5uPS0uSaAo_ .distribuidor-texto-informativo>p{
     color: black !important;
+    font-size: 22px !important;
+    font-family: 'Max Offc Extlight', Helvetica, Arial, sans-serif !important;
 }
 .gala #_BasicDistributor_INSTANCE_6xlP4EYbJQii_ .distribuidor-texto-informativo>p{
     font-size: 14px !important;
@@ -192,6 +194,15 @@ html .body .gala {
     color: #000000 !important;
     font-weight: normal;
     font-family: 'Max Offc Extlight', Helvetica, Arial, sans-serif !important;
+}
+#_BasicDistributor_INSTANCE_ehpPyFiVuWuj_ p{
+    color: black !important;
+    font-family: 'Max Offc Extlight', Helvetica, Arial, sans-serif !important;
+}
+.cta-black-interior{
+        color: #5498B1 !important;
+    text-transform: capitalize;
+    font-family: 'Max Offc Book', Helvetica, Arial, sans-serif !important;
 }
 .gala #_BasicDistributor_INSTANCE_GYtNY1qz77Km_ .distribuidor-texto-informativo>p{
     font-size: 14px !important;
@@ -413,6 +424,12 @@ html .gala .text-simple .titular h2 {
 #_BasicDistributor_INSTANCE_IGPYec9nUROE_  .distribuidor-titulo{
 
     color: #000000 !important;
+}
+#_BasicDistributor_INSTANCE_IGPYec9nUROE_ p{
+    color: black !important;
+}
+#_BasicDistributor_INSTANCE_huIdRRKdikwj_ p{
+    color: black !important;
 }
 /****************************/
 
