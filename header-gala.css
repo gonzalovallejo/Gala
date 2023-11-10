@@ -1306,8 +1306,8 @@ html .gala .highlighted-slider-image-0-_HighlightedSlide_INSTANCE_2QRzIPM4ACmP_{
 }
 #minititle{
     font-family: 'Max Offc Book', Helvetica, Arial, sans-serif !important;
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 18px !important;
+    line-height: 24px !important;
 }
 
 </style>
