@@ -606,6 +606,9 @@ html .gala .text-simple .titular h2 {
     flex: 1;
 
 }
+.materia td:last-of-type{
+    border-right: #FFFFFF;
+}
 .materia tr:nth-of-type(2) td{
     padding: 2%;
 }
@@ -1241,6 +1244,21 @@ html .gala .highlighted-slider-image-0-_HighlightedSlide_INSTANCE_2QRzIPM4ACmP_{
 
 #portlet_HighlightedSlide_INSTANCE_HMR5dXXMwE5c .cabecera-destacada .jumbotron{
     height: 773px;
+}
+
+/*Unete a nosotros SOBRE-GALA*/
+
+.td-unete{
+    font-family: 'Max Offc Book', Helvetica, Arial, sans-serif !important;
+    font-size: 14px;
+    line-height: 19px;
+    font-weight: bold;
+}
+.td-clic{
+    font-family: 'Max Offc Extrabold', Helvetica, Arial, sans-serif !important;
+    font-size: 12px;
+    line-height: 16px;
+    color: #5498B1;
 }
 
 </style>
