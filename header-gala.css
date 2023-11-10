@@ -950,7 +950,7 @@ html .gala .highlighted-slider-image-0-_HighlightedSlide_INSTANCE_2QRzIPM4ACmP_{
 .wrapper-visual-link .distribuidor-texto{
     padding-left: 60px;
     padding-right: 15px;
-    padding-top: 14%;
+    padding-top: 0%;
   }
 #_BasicDistributor_INSTANCE_6xlP4EYbJQii_ .wrapper-visual-link .distribuidor-texto{
     padding-left: 60px;
@@ -1272,6 +1272,11 @@ html .gala .highlighted-slider-image-0-_HighlightedSlide_INSTANCE_2QRzIPM4ACmP_{
     font-size: 12px;
     line-height: 16px;
     color: #5498B1;
+}
+#minititle{
+    font-family: 'Max Offc Book', Helvetica, Arial, sans-serif !important;
+    font-size: 18px;
+    line-height: 24px;
 }
 
 </style>
