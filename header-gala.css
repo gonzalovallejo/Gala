@@ -437,7 +437,9 @@ html .gala .text-simple .titular h2 {
 }
 #_BasicDistributor_INSTANCE_1Je115vLWmtN_ p{
     color:black !important;
-        font-family: 'Max Offc Extlight', Helvetica, Arial, sans-serif !important;
+        font-size: 22px !important;
+        line-height: 29px !important;
+    font-family: 'Max Offc Extlight', Helvetica, Arial, sans-serif !important;
 
 }
 /****************************/
@@ -474,6 +476,7 @@ html .gala .text-simple .titular h2 {
             grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual ancho */
             grid-template-rows: repeat(2, 1fr); /* 2 filas de igual alto */
             gap: 10px; /* Espacio entre las celdas */
+
         }
         #portlet_ArticleText_INSTANCE_EEz5esuT9Fzk .grid-container p:first-of-type{
             color: #5498B1;
@@ -511,6 +514,13 @@ html .gala .text-simple .titular h2 {
             width: 190px;
             margin-left: 22%;
         }
+                #portlet_ArticleText_INSTANCE_EEz5esuT9Fzk .grid-item:nth-of-type(3){
+                        border-right: 1px solid #FFFFFF;
+                }
+                #portlet_ArticleText_INSTANCE_EEz5esuT9Fzk .grid-item:last-of-type{
+                        border-right: 1px solid #FFFFFF;
+                }
+                
         .titular{
             display: flex;
             -moz-column-gap: 30px;
@@ -978,7 +988,7 @@ html .gala .highlighted-slider-image-0-_HighlightedSlide_INSTANCE_2QRzIPM4ACmP_{
     padding-right: 15px;
     padding-top: 14%;
   }
-  #_BasicDistributor_INSTANCE_ehpPyFiVuWuj_ .wrapper-visual-link .distribuidor-texto{
+      #_BasicDistributor_INSTANCE_ehpPyFiVuWuj_ .wrapper-visual-link .distribuidor-texto{
     padding-left: 60px;
     padding-right: 15px;
     padding-top: 0%;
@@ -1256,6 +1266,42 @@ html .gala .highlighted-slider-image-0-_HighlightedSlide_INSTANCE_2QRzIPM4ACmP_{
             width: 190px;
             margin-left: 22%;
         }
+                
+                #portlet_ArticleText_INSTANCE_EEz5esuT9Fzk .image{
+            min-width: 300px;
+        } 
+                        /*responsive grid template de principios de sostenibilidad*/
+
+        @media screen and (min-width: 0px) and (max-width: 576px) { 
+  #portlet_ArticleText_INSTANCE_EEz5esuT9Fzk .grid-container {
+                grid-template-columns: 1fr; /* Cambiar a 1 columnas en pantallas más pequeñas */
+            }
+            
+}
+@media screen and (min-width: 577px) and (max-width: 768px) {
+            #portlet_ArticleText_INSTANCE_EEz5esuT9Fzk .grid-container {
+                grid-template-columns: repeat(2, 1fr); /* Cambiar a 2 columnas en pantallas más pequeñas */
+            }
+           
+}
+@media screen and (min-width: 769px) and (max-width: 991px) {
+            #portlet_ArticleText_INSTANCE_EEz5esuT9Fzk .grid-container {
+                grid-template-columns: repeat(2, 1fr); /* Cambiar a 2 columnas en pantallas más pequeñas */
+            }
+            
+}
+@media screen and (min-width: 992px) {
+            #portlet_ArticleText_INSTANCE_EEz5esuT9Fzk .grid-container {
+                grid-template-columns: repeat(3, 1fr); /* Cambiar a 2 columnas en pantallas más pequeñas */
+            }
+            
+}
+                
+                
+                
+                
+                
+                
 /*CAMBIOS EN PRINCIPIO DE SOSTENIBILIDAD 09-11 JAIME*/
 
 #principiossostenibilidad{
