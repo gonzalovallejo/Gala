@@ -698,6 +698,25 @@ section.materialidad p{
     margin-top: 6%;
 
 }
+
+
+
+/*CSS MEDIA QUERIS ANALISIS DOBLE MATERIALIDAD: PRINCIPIOS DE SOSENIBILIDAD*/
+
+/*@media (max-width: 1280px){
+    .text-simple:has(table) table td{
+
+    }
+}*/
+@media (max-width: 768px){
+    .text-simple:has(table) table td {
+        border-right: #FFFFFF;
+    }
+}
+
+
+
+
 /*principios de sostenibilidad artículos 2 y 3*/
 
 #principiossostenibilidad{
@@ -1270,7 +1289,8 @@ html .gala .highlighted-slider-image-0-_HighlightedSlide_INSTANCE_2QRzIPM4ACmP_{
                 #portlet_ArticleText_INSTANCE_EEz5esuT9Fzk .image{
             min-width: 300px;
         } 
-                        /*responsive grid template de principios de sostenibilidad*/
+
+/*responsive grid template de principios de sostenibilidad*/
 
         @media screen and (min-width: 0px) and (max-width: 576px) { 
             #portlet_ArticleText_INSTANCE_EEz5esuT9Fzk .grid-container {
@@ -1280,8 +1300,8 @@ html .gala .highlighted-slider-image-0-_HighlightedSlide_INSTANCE_2QRzIPM4ACmP_{
                 border-right: none;
             }
             
-}
-@media screen and (min-width: 577px) and (max-width: 768px) {
+        }
+        @media screen and (min-width: 577px) and (max-width: 768px) {
             #portlet_ArticleText_INSTANCE_EEz5esuT9Fzk .grid-container {
                 grid-template-columns: repeat(2, 1fr); /* Cambiar a 2 columnas en pantallas más pequeñas */
             }
@@ -1289,8 +1309,8 @@ html .gala .highlighted-slider-image-0-_HighlightedSlide_INSTANCE_2QRzIPM4ACmP_{
                 border-right: none;
             }
            
-}
-@media screen and (min-width: 769px) and (max-width: 991px) {
+        }
+        @media screen and (min-width: 769px) and (max-width: 991px) {
             #portlet_ArticleText_INSTANCE_EEz5esuT9Fzk .grid-container {
                 grid-template-columns: repeat(2, 1fr); /* Cambiar a 2 columnas en pantallas más pequeñas */
                 
@@ -1299,13 +1319,13 @@ html .gala .highlighted-slider-image-0-_HighlightedSlide_INSTANCE_2QRzIPM4ACmP_{
                 border-right: none;
             }
             
-}
-@media screen and (min-width: 992px) {
+        }
+        @media screen and (min-width: 992px) {
             #portlet_ArticleText_INSTANCE_EEz5esuT9Fzk .grid-container {
                 grid-template-columns: repeat(3, 1fr); /* Cambiar a 2 columnas en pantallas más pequeñas */
             }
             
-}
+        }
                 
                 
                 
