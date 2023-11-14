@@ -79,6 +79,9 @@ html .body .gala {
     line-height: 72px !important;
     font-family: 'Max Offc Extrabold', Helvetica, Arial, sans-serif !important;
 }
+#_HighlightedSlide_INSTANCE_HMR5dXXMwE5c_cabecera-destacada h1{
+    font-size: 0.7em !important;
+}
 .gala h2{
     font-size: 40px !important;
     line-height: 52px !important;
@@ -810,6 +813,7 @@ section.materialidad p{
             }
             #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z section.grid-container>article.grid-item{
                 border-right: none;
+                min-width: 300px;
             }
             
         }
@@ -825,6 +829,7 @@ section.materialidad p{
             }
             #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z section.grid-container>article.grid-item{
                 border-right: none !important;
+                min-width: 300px;
             }
            
         }
