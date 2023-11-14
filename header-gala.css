@@ -737,6 +737,8 @@ section.materialidad p{
             } 
             .image>img{
                 width: 100%;
+                min-width: 250px;
+                min-height: 150px;
             }
             section.materialidad{
                 margin: 0;
@@ -765,6 +767,7 @@ section.materialidad p{
             }
             .image>img{
                 width: 100%;
+                max-height: 250px;
             }
 }
 @media screen and (min-width: 992px) {
@@ -789,8 +792,50 @@ section.materialidad p{
 .tabla-sostenibilidad td:first-child {
   text-align: left;
 }
-/*CSS PROYCTO DE EFICIENCIA ENERGÉTICA*/
 
+
+/*MEDIA QUERIS PROYECTO DE EFICIENCIA ENERGÉTICA*/
+
+
+
+        @media screen and (min-width: 0px) and (max-width: 576px) { 
+            #portlet_ArticleText_INSTANCE_EEz5esuT9Fzk .grid-container {
+                grid-template-columns: 1fr; /* Cambiar a 1 columnas en pantallas más pequeñas */
+            }
+            #portlet_ArticleText_INSTANCE_EEz5esuT9Fzk .grid-item{
+                border-right: none;
+            }
+            
+        }
+        @media screen and (min-width: 577px) and (max-width: 768px) {
+            #portlet_ArticleText_INSTANCE_EEz5esuT9Fzk .grid-container {
+                grid-template-columns: repeat(2, 1fr); /* Cambiar a 2 columnas en pantallas más pequeñas */
+            }
+            #portlet_ArticleText_INSTANCE_EEz5esuT9Fzk .grid-item{
+                border-right: none;
+            }
+           
+        }
+        @media screen and (min-width: 769px) and (max-width: 991px) {
+            #portlet_ArticleText_INSTANCE_EEz5esuT9Fzk .grid-container {
+                grid-template-columns: repeat(2, 1fr); /* Cambiar a 2 columnas en pantallas más pequeñas */
+                
+            }
+            #portlet_ArticleText_INSTANCE_EEz5esuT9Fzk .grid-item{
+                border-right: none;
+            }
+            
+        }
+        @media screen and (min-width: 992px) {
+            #portlet_ArticleText_INSTANCE_EEz5esuT9Fzk .grid-container {
+                grid-template-columns: repeat(3, 1fr); /* Cambiar a 2 columnas en pantallas más pequeñas */
+            }
+            
+        }
+
+
+
+/*CSS PROYCTO DE EFICIENCIA ENERGÉTICA*/
 
 
 html #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z #submenucontainer {
@@ -833,6 +878,7 @@ html #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z #submenucontainer {
 }
 #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z section.textunico{
     display: flex;
+    flex-wrap: wrap;
 }
 #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z section.textunico:first-of-type article.titular{
     display: flex;
@@ -856,7 +902,7 @@ html #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z #submenucontainer {
 }
 #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z section.textunico:first-of-type article.titular{
     width: 40%;
-/*    margin-left: 2%;*/
+    min-width: 300px;
 }
 #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z section.textunico figure.image{
     display: flex;
@@ -864,6 +910,7 @@ html #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z #submenucontainer {
     flex: 2;
     margin: 2% 1%;
     padding: 2% 0%;
+    align-items: center;
 }
 #portlet_ArticleText_INSTANCE_H9pzvRT9QX2Z section.grid-container{
     display: flex;
