@@ -1275,18 +1275,21 @@ html .gala .highlighted-slider-image-0-_HighlightedSlide_INSTANCE_2QRzIPM4ACmP_{
         @media screen and (min-width: 0px) and (max-width: 576px) { 
   #portlet_ArticleText_INSTANCE_EEz5esuT9Fzk .grid-container {
                 grid-template-columns: 1fr; /* Cambiar a 1 columnas en pantallas más pequeñas */
+                border-color: #FFFFFF;
             }
             
 }
 @media screen and (min-width: 577px) and (max-width: 768px) {
             #portlet_ArticleText_INSTANCE_EEz5esuT9Fzk .grid-container {
                 grid-template-columns: repeat(2, 1fr); /* Cambiar a 2 columnas en pantallas más pequeñas */
+                border-color: #FFFFFF;
             }
            
 }
 @media screen and (min-width: 769px) and (max-width: 991px) {
             #portlet_ArticleText_INSTANCE_EEz5esuT9Fzk .grid-container {
                 grid-template-columns: repeat(2, 1fr); /* Cambiar a 2 columnas en pantallas más pequeñas */
+                border-color: #FFFFFF;
             }
             
 }
