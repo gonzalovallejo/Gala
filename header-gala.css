@@ -1471,5 +1471,749 @@ html .gala .highlighted-slider-image-0-_HighlightedSlide_INSTANCE_2QRzIPM4ACmP_{
     font-size: 18px !important;
     line-height: 24px !important;
 }
-
+/* TITULO PRODUCTO */
+.title-producto a {
+    font-size: 16px !important;
+    color: black !important;
+  }
+/* TITULO Superior PRODUCTO */
+.wrapper-text p {
+    font-size: 16px !important;
+    text-transform: lowercase !important;
+  }
+  .wrapper-text p::first-letter {
+    text-transform: uppercase !important;
+}
 </style>
+
+<#global
+    globalCacheManager = cacheUtils.getCacheManager(themeDisplay.getScopeGroupId())!
+/>
+
+<#if globalCacheManager??>
+
+<#global
+
+    p_Map = productsMap?eval
+    c_Map = collectionsMap?eval
+    u_Layouts = userLayouts?eval
+    cc_Map = continentsAndCountriesMap?eval
+    
+    profile_layouts = u_Layouts.profileLayouts  
+    
+    profile_url = u_Layouts.profileUrl
+    logout_url = u_Layouts.logoutUrl
+    login_url = u_Layouts.loginUrl
+    
+    marketTree = globalCacheManager.getMarketsTree()
+    hasCommerce = globalCacheManager.checkCommerce(request)
+    currentCountry = globalCacheManager.getCurrentCountry(request)!
+    
+/>
+
+<header class="js-header">
+<div class="main-header__wrapper">
+    <!-- supra menu -->
+    <section class="supramenu">
+        <div class="container">
+            <div class="row row-flex">
+                <div class="col-md-4 supramenu-left">
+                    <ul class="supramenu__list supramenu__list--left">
+                        <#if getterUtil.getBoolean(showLanguage.getData())>
+                        <li class="supramenu__item supramenu__item--language" id="lang-list">
+                            <div class="js-language-menu js-collapse-sm">
+                                <div class="link-wrapper">
+                                    <a class="supramenu__link" href="javascript:void(0)">
+                                        <span>${themeDisplay.getLocale().getLanguage()}</span>
+                                    </a>
+                                    <#if localeList?? && localeList?has_content && localeList?size gt 1>
+                                    <span class="arrow"></span>
+                                    </#if>
+                                </div>
+                                
+                                <#if localeList?? && localeList?has_content && localeList?size gt 1>
+                                <div id="language" class="js-menu-collapse dropdown-menu" aria-labelledby="toggle-user-menu">
+                                    <div class="wrapper">
+                                        <ul>
+                                            <#list localeList as marketLocale>
+                                            <#if themeDisplay.getLocale() != marketLocale>
+                                                <#assign lpath = "/" />
+                                                <#if currentCountry?? && currentCountry.code == "ES">
+                                                    <#assign lpath = globalCacheManager.translate(themeDisplay.getLocale(), "/sobre-roca") />
+                                                </#if>
+                                                <li>
+                                                    <a href="${globalCacheManager.getSiteURL(request, marketLocale, lpath, false)}">
+                                                        ${marketLocale.getDisplayLanguage(themeDisplay.getLocale())}
+                                                    </a>
+                                                </li>
+                                            </#if>
+                                            </#list>
+                                        </ul>
+                                    </div>
+                                </div>
+                                </#if>                              
+                            </div>
+                        </li>
+                        </#if>
+                        <!-- Obtain the country  -->
+                        <#if getterUtil.getBoolean(showCountry.getData())>
+                        <li class="supramenu__item supramenu__item--country menu-country-trigger">
+                            <#if currentCountry?? && currentCountry?has_content>
+                            <a class="supramenu__link" href="javascript:void(0)" data-target="country-menu-collapse">${currentCountry.getAssetCategory().getTitle(themeDisplay.getLocale())}</a>
+                            </#if>
+                        </li>
+                        </#if>
+                        <#if getterUtil.getBoolean(showAbout.getData())>
+                            <#if about.aboutLink.getData()?has_content>
+                            <li class="supramenu__item supramenu__item--about">
+                                    <#assign abtLink = globalCacheManager.parseLinkURL(request, about.aboutLink.getData()) />
+                                <a class="supramenu__link" href="${abtLink}" target="_blank" rel="noopener noreferrer">${about.aboutText.getData()}</a>
+                            </li>
+                            </#if>
+                        </#if>
+                    </ul>
+                </div>
+                <div class="col-md-8 supramenu-right">
+                    <ul class="supramenu__list supramenu__list--right">
+                    <#if link.getSiblings()?has_content>
+                        <#list link.getSiblings() as cur_headTopLink>
+                        <li class="supramenu__item">
+                            <#assign chtLink = globalCacheManager.parseLinkURL(request, cur_headTopLink.linkUrl.getData()) />
+                            <a class="supramenu__link" href="${chtLink}" target="${globalCacheManager.getLinkTarget(chtLink)}">${cur_headTopLink.linkText.getData()}</a>
+                        </li>
+                        </#list>
+                    </#if>
+                        <#list icon.getSiblings() as cur_headIconLink>
+                        <li class="supramenu__item supramenu__item--icon">
+                            <#assign
+                                chiLink = globalCacheManager.parseLinkURL(request, cur_headIconLink.iconLink.getData())
+                            />
+                            <#if chiLink?contains("comparator")>
+                                <#assign typeIcon = globalCacheManager.translate(locale, "Comparator") />
+                                <a class="supramenu__link" href="${chiLink}" target="${globalCacheManager.getLinkTarget(chiLink)}" title="${typeIcon}">
+                                <i class="${cur_headIconLink.iconClass.getData()}"></i>
+                                <span>${cur_headIconLink.iconText.getData()}</span>
+                                </a>
+                            <#elseif chiLink?contains("favorites")>
+                                <#assign typeIcon = globalCacheManager.translate(locale, "Favourites") />
+                                <a class="supramenu__link" href="${chiLink}" target="${globalCacheManager.getLinkTarget(chiLink)}" title="${typeIcon}">
+                                <i class="${cur_headIconLink.iconClass.getData()}"></i>
+                                <span>${cur_headIconLink.iconText.getData()}</span>
+                                </a>
+                            <#else>
+                                <a class="supramenu__link" href="${chiLink}" target="${globalCacheManager.getLinkTarget(chiLink)}">
+                                <i class="${cur_headIconLink.iconClass.getData()}"></i>
+                                <span>${cur_headIconLink.iconText.getData()}</span>
+                                </a>
+                            </#if>
+                        </li>
+                        </#list>
+                        <#if getterUtil.getBoolean(showPrivate.getData())>
+                            <#if themeDisplay.isSignedIn()>
+                            <li class="supramenu__item supramenu__item--user">
+                                <div class="js-user-menu js-collapse-sm">
+                                    <div class="link-wrapper">
+                                    <#assign cur_User = themeDisplay.getUser() />
+                                        <#assign profLink = profile_url />
+                                        <a class="supramenu__link" href="${profLink}"><img class="img-circle" src="${cur_User.getPortraitURL(themeDisplay)}" alt="${cur_User.getFullName()}"><span>${cur_User.getFirstName()} ${cur_User.getLastName()[0]}. </span></a>
+                                        <span class="arrow"></span>
+                                    </div>
+                                    <div id="user-menu" class="js-menu-collapse dropdown-menu" aria-labelledby="toggle-user-menu">
+                                        <div class="wrapper">
+                                            <ul>
+                                                <#list profile_layouts as userLayout>
+                                                <li>
+                                                    <#assign ulLink = userLayout.url />
+                                                    <a href="${ulLink}">${userLayout.label}</a>
+                                                </li>
+                                                </#list>
+                                                <li class="user-item">
+                                                    <a class="user-link" href="${profLink}"><img src="${cur_User.getPortraitURL(themeDisplay)}" alt="${cur_User.getFullName()}">
+                                                    <span>${cur_User.getFullName()}</span>
+                                                    </a>
+                                                    <#assign logoutLink = logout_url />
+                                                    <a class="user-logout icon-logout-18" href="${logoutLink}"><span>${globalCacheManager.translate(locale, "Exit")}</span></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <#else>
+                            <li class="supramenu__item supramenu__item--login">
+                                <#assign loginLink = login_url />
+                                <a class="supramenu__link" href="${loginLink}">${globalCacheManager.translate(locale, "Sign in")}</a>
+                            </li>
+                            </#if>
+                        </#if>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="main-nav js-main-nav">
+        <div class="container">
+            <div class="row-flex">
+                <div class="logo-header">
+                    <#if logoLink.getData()?has_content>
+                    <#assign
+                        lgLink = globalCacheManager.parseLinkURL(request, logoLink.getData())
+                    />
+                    <a href="${lgLink}" target="${globalCacheManager.getLinkTarget(lgLink)}">
+                        <img src="${logo.getData()}" style="<#if (logo.width)?? && logo.width.getData()?has_content && logo.width.getData() != "0" >width:${logo.width.getData()}px;</#if><#if (logo.height)?? && logo.height.getData()?has_content && logo.height.getData() != "0" >height:${logo.height.getData()}px;</#if>                    
+                        "
+                        alt="Roca">
+                    </a>
+                    <#else>
+                        <img src="${logo.getData()}" style="
+                        <#if (logo.width)?? && logo.width.getData()?has_content && logo.width.getData() != "0">
+                            width:${logo.width.getData()}px;
+                        </#if>
+                        <#if (logo.height)?? && logo.height.getData()?has_content && logo.height.getData() != "0">
+                            height:${logo.height.getData()}px;
+                        </#if>                   
+                        "
+                        alt="Roca">
+                    </#if>
+                </div>
+                <nav class="main-menu__wrapper">
+                    <#if menu.getSiblings()?has_content>
+                        <ul class="main-menu__list" id="id001">
+                        <#list menu.getSiblings() as cur_headNavItem>
+                            <li class="main-menu__item js-collapse-sm">
+                                <div class="link-wrapper">
+                                    <#assign
+                                        mUrlLink = globalCacheManager.parseLinkURL(request, cur_headNavItem.menuUrl.getData())
+                                    />
+                                    <a class="main-menu__link" href="${mUrlLink}" target="${globalCacheManager.getLinkTarget(mUrlLink)}">${cur_headNavItem.menuText.getData()}</a>
+                                    <#if cur_headNavItem.menuType.getData() == 'PRODUCTS'>
+                                        <span class="arrow"></span>
+                                </div>
+                                
+                                <div id="product-menu-2" class="js-menu-collapse dropdown-menu mega-menu products">
+                                    <div class="wrapper">
+                                        <section>
+                                            <div class="container">
+                                                <div class="row row-flex">
+                                                    <div class="main-content col-xs-12 col-sm-12">
+                                                        <div class="wrapper">   
+                                                            <ul class="row row-flex">
+                                                            <#list p_Map?sort_by("websort") as item>
+                                                                <li class="col-xs-6 col-md-4">
+                                                                    <div class="product-list-item">
+                                                                        <#assign itemLink = item.url />
+                                                                        <a href="${itemLink}">
+                                                                        <#if item.title?has_content >
+                                                                            <div class="img-wrap">
+                                                                                <img src="${item.image!}" alt="${item.title}">
+                                                                            </div>
+                                                                            <div class="text-wrap">
+                                                                                <span>${item.title}</span>
+                                                                            </div>
+                                                                        <#else>
+                                                                            <div class="img-wrap">
+                                                                                <img src="${item.image!}">
+                                                                            </div>
+                                                                            <div class="text-wrap">
+                                                                                <span></span>
+                                                                            </div>
+                                                                        </#if>
+                                                                        </a>
+                                                                    </div>
+                                                                </li>
+                                                            </#list>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <#-- <article class="col-xs-12 col-sm-4">
+                                                        <div class="wrapper">
+                                                        ${cur_headNavItem.menuPromo.menuPromoText.getData()}
+                                                        </div>
+                                                        <#if cur_headNavItem.menuPromo.menuPromoImage.getData()?has_content>
+                                                        <span class="background-grow" style="background-image: url('${cur_headNavItem.menuPromo.menuPromoImage.getData()}');background-repeat: no-repeat;background-size: cover;"></span>
+                                                        <#else>
+                                                        <span class="background-grow"></span>
+                                                        </#if>
+                                                    </article> -->
+                                                </div>
+                                            </div>
+                                            
+                                            <footer>
+                                                <div class="row-flex">
+                                                    <div class="goto-link">
+                                                        <a href="${mUrlLink}">${globalCacheManager.translate(locale, "Go to")} ${cur_headNavItem.menuText.getData()}<span class="right-arrow"></span></a>
+                                                    </div>
+                                                    <#if cur_headNavItem.menuIcon.getSiblings()?has_content>
+                                                        <#list cur_headNavItem.menuIcon.getSiblings() as cur_headNavItemBottomLink>
+                                                        <div class="footer-link">
+                                                            <#assign
+                                                                iBottomLink = globalCacheManager.parseLinkURL(request, cur_headNavItemBottomLink.menuIconUrl.getData())
+                                                            />
+                                                            <a href="${iBottomLink}" target="${globalCacheManager.getLinkTarget(iBottomLink)}"><img src="${cur_headNavItemBottomLink.menuIconFile.getData()}" 
+                                                            style="
+                                                                <#if cur_headNavItemBottomLink.menuIconFile.menuIconFileWidth?? && cur_headNavItemBottomLink.menuIconFile.menuIconFileWidth.getData()?has_content && cur_headNavItemBottomLink.menuIconFile.menuIconFileWidth.getData() != "0">
+                                                                    width: ${cur_headNavItemBottomLink.menuIconFile.menuIconFileWidth.getData()}px;
+                                                                </#if>
+
+                                                                <#if cur_headNavItemBottomLink.menuIconFile.menuIconFileHeight?? && cur_headNavItemBottomLink.menuIconFile.menuIconFileHeight.getData()?has_content && cur_headNavItemBottomLink.menuIconFile.menuIconFileHeight.getData() != "0">
+                                                                    height: ${cur_headNavItemBottomLink.menuIconFile.menuIconFileHeight.getData()}px;
+                                                                </#if>
+                                                            "
+                                                             alt="${cur_headNavItemBottomLink.menuIconText.getData()}">
+                                                            <span>${cur_headNavItemBottomLink.menuIconText.getData()}</span></a>
+                                                        </div>
+                                                        </#list>
+                                                    </#if>
+                                                </div>
+                                            </footer>
+                                        </section>
+                                    </div>
+                                </div>
+                                    <#elseif cur_headNavItem.menuType.getData() == 'COLLECTIONS'>
+                                        <span class="arrow"></span>
+                                </div>
+                                
+                                <div id="collection-menu-2" class="js-menu-collapse dropdown-menu mega-menu">
+                                    <div class="wrapper">
+                                        <section>
+                                            <div class="container">
+                                                <div class="row row-flex">
+                                                    <div class="main-content col-xs-12 col-xl-8">
+                                                        <div class="wrapper">
+                                                            <ul class="row row-flex">
+                                                            <#list c_Map?sort_by("websort") as coll>
+                                                                <#if coll.title?has_content >
+                                                                <li class="col-xs-12 col-sm-6 col-lg-4">
+                                                                    <div class="collection-list-item">
+                                                                        <#if coll.url?? && coll.url?has_content>
+                                                                        <#assign collLink = coll.url />
+                                                                        <a href="${collLink}" class="collection">${coll.title}</a>
+                                                                        <#else>
+                                                                        <a href="#" class="collection">${coll.title}</a>
+                                                                        </#if>
+                                                                        <ul class="sub-items">
+                                                                        <#list coll.children as subColl>
+                                                                            <li class="sub-item">
+                                                                            <#if subColl.url?? && subColl.url?has_content>
+                                                                                <#assign sCollLink = subColl.url />
+                                                                                <a href="${sCollLink}">${subColl.title}</a>
+                                                                            <#else>
+                                                                                <a href="#">${subColl.title}</a>
+                                                                            </#if>
+                                                                        </#list>
+                                                                        <#if coll.children?size < coll.totalChildren>
+                                                                            ...</li>
+                                                                        <#else>
+                                                                            </li>
+                                                                        </#if>
+                                                                        </ul>
+                                                                    </div>
+                                                                </li>
+                                                                </#if>
+                                                            </#list>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <article class="col-xs-12 col-xl-4">
+                                                        <div class="wrapper">
+                                                        ${cur_headNavItem.menuPromo.menuPromoText.getData()}
+                                                        </div>
+                                                        <#if cur_headNavItem.menuPromo.menuPromoImage.getData()?has_content>
+                                                        <span class="background-grow" style="background-image: url('${cur_headNavItem.menuPromo.menuPromoImage.getData()}');background-repeat: no-repeat;background-size: cover;"></span>
+                                                        <#else>
+                                                        <span class="background-grow"></span>
+                                                        </#if>
+                                                    </article>
+                                                </div>
+                                            </div>
+                                            
+                                            <footer>
+                                                <div class="row-flex">
+                                                    <div class="goto-link">
+                                                        <a href="${mUrlLink}">${globalCacheManager.translate(locale, "Go to")} ${cur_headNavItem.menuText.getData()}<span class="right-arrow"></span></a>
+                                                    </div>
+                                                    <#if cur_headNavItem.menuIcon.getSiblings()?has_content>
+                                                        <#list cur_headNavItem.menuIcon.getSiblings() as cur_headNavItemBottomLink>
+                                                        <div class="footer-link">
+                                                            <#assign
+                                                                iBottomLink = globalCacheManager.parseLinkURL(request, cur_headNavItemBottomLink.menuIconUrl.getData())
+                                                            />
+                                                            <a href="${iBottomLink}" target="${globalCacheManager.getLinkTarget(iBottomLink)}"><img src="${cur_headNavItemBottomLink.menuIconFile.getData()}" 
+                                                            style="
+                                                                <#if cur_headNavItemBottomLink.menuIconFile.menuIconFileWidth?? && cur_headNavItemBottomLink.menuIconFile.menuIconFileWidth.getData()?has_content && cur_headNavItemBottomLink.menuIconFile.menuIconFileWidth.getData() != "0">
+                                                                    width: ${cur_headNavItemBottomLink.menuIconFile.menuIconFileWidth.getData()}px;
+                                                                </#if>
+
+                                                                <#if cur_headNavItemBottomLink.menuIconFile.menuIconFileHeight?? && cur_headNavItemBottomLink.menuIconFile.menuIconFileHeight.getData()?has_content && cur_headNavItemBottomLink.menuIconFile.menuIconFileHeight.getData() != "0">
+                                                                    height: ${cur_headNavItemBottomLink.menuIconFile.menuIconFileHeight.getData()}px;
+                                                                </#if>
+                                                            "
+                                                            alt="${cur_headNavItemBottomLink.menuIconText.getData()}">
+                                                            <span>${cur_headNavItemBottomLink.menuIconText.getData()}</span></a>
+                                                        </div>
+                                                        </#list>
+                                                    </#if>
+                                                </div>
+                                            </footer>
+                                        </section>
+                                    </div>
+                                </div>                                      
+                                    <#elseif cur_headNavItem.menuType.getData() == 'PROFESSIONALS'>
+                                        <span class="arrow"></span>
+                                </div>
+                                
+                                <div id="pro-menu-2" class="js-menu-collapse dropdown-menu mega-menu">
+                                    <div class="wrapper">
+                                        <section>
+                                            <div class="container">
+                                                <div class="row">
+                                                
+                                                    <div class="main-content col-xs-12 col-xl-8 blue-theme">
+                                                        <div class="wrapper">
+                                                            <div class="pro-box">
+                                                                <#if cur_headNavItem.menuPro.menuProImage.getData()?has_content>
+                                                                    <#assign
+                                                                        proImageLink = globalCacheManager.parseLinkURL(request, cur_headNavItem.menuPro.menuProImageUrl.getData())
+                                                                    />
+                                                                    <a href="${proImageLink}" target="${globalCacheManager.getLinkTarget(proImageLink)}">
+                                                                        <img src="${cur_headNavItem.menuPro.menuProImage.getData()}" 
+                                                                        style="
+                                                                <#if cur_headNavItem.menuPro.menuProImage.menuProImageWidth?? && cur_headNavItem.menuPro.menuProImage.menuProImageWidth.getData()?has_content && cur_headNavItem.menuPro.menuProImage.menuProImageWidth.getData() != "0">
+                                                                    width: ${cur_headNavItem.menuPro.menuProImage.menuProImageWidth.getData()}px;
+                                                                </#if>
+
+                                                                <#if cur_headNavItem.menuPro.menuProImage.menuProImageHeight?? && cur_headNavItem.menuPro.menuProImage.menuProImageHeight.getData()?has_content && cur_headNavItem.menuPro.menuProImage.menuProImageHeight.getData() != "0">
+                                                                    height: ${cur_headNavItem.menuPro.menuProImage.menuProImageHeight.getData()}px;
+                                                                </#if>
+                                                            "
+                                                            alt="Pro">
+                                                                    </a>
+                                                                </#if>
+                                                                <#if cur_headNavItem.menuPro.menuProText.getData()?has_content>
+                                                                <div class="text-content">
+                                                                    ${cur_headNavItem.menuPro.menuProText.getData()}
+                                                                </div>
+                                                                </#if>
+                                                                <#if cur_headNavItem.menuPro.menuProSection.getSiblings()?has_content>                                                              
+                                                                <ul class="pro-list-items">
+                                                                    <#list cur_headNavItem.menuPro.menuProSection.getSiblings() as cur_proSection>
+                                                                    <li class="pro-list-item">
+                                                                        <#assign
+                                                                            proSectionLink = globalCacheManager.parseLinkURL(request, cur_proSection.menuProSectionLink.getData())
+                                                                        />
+                                                                        <a href="${proSectionLink}" target="${globalCacheManager.getLinkTarget(proSectionLink)}">${cur_proSection.menuProSectionText.getData()}</a>
+                                                                    </li>
+                                                                    </#list>
+                                                                </ul>
+                                                                </#if>
+                                                            </div>
+                                                        </div>
+                                                        <span class="background-grow"></span>
+                                                    </div>
+                                                    
+                                                    <article class="col-xs-12 col-xl-4 grey-theme">
+                                                        <div class="wrapper">
+                                                            <div class="pro-box">
+                                                                <#if cur_headNavItem.menuContract.menuContractImage.getData()?has_content>
+                                                                    <#assign
+                                                                        contractImageLink = globalCacheManager.parseLinkURL(request, cur_headNavItem.menuContract.menuContractImageUrl.getData())
+                                                                    />
+                                                                    <a href="${contractImageLink}" target="${globalCacheManager.getLinkTarget(contractImageLink)}">
+                                                                        <img src="${cur_headNavItem.menuContract.menuContractImage.getData()}" style="
+                                                                <#if cur_headNavItem.menuContract.menuContractImage.menuContractImageWidth?? && cur_headNavItem.menuContract.menuContractImage.menuContractImageWidth.getData()?has_content && cur_headNavItem.menuContract.menuContractImage.menuContractImageWidth.getData() != "0">
+                                                                    width: ${cur_headNavItem.menuContract.menuContractImage.menuContractImageWidth.getData()}px;
+                                                                </#if>
+
+                                                                <#if cur_headNavItem.menuContract.menuContractImage.menuContractImageHeight?? && cur_headNavItem.menuContract.menuContractImage.menuContractImageHeight.getData()?has_content && cur_headNavItem.menuContract.menuContractImage.menuContractImageHeight.getData() != "0">
+                                                                    height: ${cur_headNavItem.menuContract.menuContractImage.menuContractImageHeight.getData()}px;
+                                                                </#if>
+                                                                "
+
+                                                                        alt="Contract">
+                                                                    </a>
+                                                                </#if>
+                                                                <#if cur_headNavItem.menuContract.menuContractText.getData()?has_content>
+                                                                <div class="text-content">                                                              
+                                                                    ${cur_headNavItem.menuContract.menuContractText.getData()}
+                                                                </div>
+                                                                </#if>
+                                                                <#if cur_headNavItem.menuContract.menuContractSection?? && cur_headNavItem.menuContract.menuContractSection.getSiblings()?has_content>                                                              
+                                                                <ul class="pro-list-items">
+                                                                    <#list cur_headNavItem.menuContract.menuContractSection.getSiblings() as cur_contractSection>
+                                                                    <li class="pro-list-item">
+                                                                        <#assign
+                                                                            contractSectionLink = globalCacheManager.parseLinkURL(request, cur_contractSection.menuContractSectionLink.getData())
+                                                                        />
+                                                                        <a href="${contractSectionLink}" target="${globalCacheManager.getLinkTarget(contractSectionLink)}">${cur_contractSection.menuContractSectionText.getData()}</a>
+                                                                    </li>
+                                                                    </#list>
+                                                                </ul>
+                                                                </#if>
+                                                            </div>
+                                                        </div>
+                                                        <span class="background-grow"></span>
+                                                    </article>
+                                                </div>
+                                            </div>
+                                            
+                                            <footer>
+                                                <div class="row-flex">
+                                                    <div class="goto-link">
+                                                        <a href="${mUrlLink}">${globalCacheManager.translate(locale, "Go to")} ${cur_headNavItem.menuText.getData()} <span class="right-arrow"></span>
+                                                        </a>
+                                                    </div>
+                                                    <#if cur_headNavItem.menuIcon.getSiblings()?has_content>
+                                                        <#list cur_headNavItem.menuIcon.getSiblings() as cur_headNavItemBottomLink>
+                                                        <div class="footer-link">
+                                                            <#assign
+                                                                iBottomLink = globalCacheManager.parseLinkURL(request, cur_headNavItemBottomLink.menuIconUrl.getData())
+                                                            />
+                                                            <a href="${iBottomLink}" target="${globalCacheManager.getLinkTarget(iBottomLink)}"><img src="${cur_headNavItemBottomLink.menuIconFile.getData()}" style="<#if cur_headNavItemBottomLink.menuIconFile.menuIconFileWidth?? && cur_headNavItemBottomLink.menuIconFile.menuIconFileWidth.getData()?has_content && cur_headNavItemBottomLink.menuIconFile.menuIconFileWidth.getData() != "0">width: ${cur_headNavItemBottomLink.menuIconFile.menuIconFileWidth.getData()}px;</#if>
+
+                                                                <#if cur_headNavItemBottomLink.menuIconFile.menuIconFileHeight?? && cur_headNavItemBottomLink.menuIconFile.menuIconFileHeight.getData()?has_content && cur_headNavItemBottomLink.menuIconFile.menuIconFileHeight.getData() != "0">height: ${cur_headNavItemBottomLink.menuIconFile.menuIconFileHeight.getData()}px;</#if>"
+
+                                                            alt="${cur_headNavItemBottomLink.menuIconText.getData()}">
+                                                            <span>${cur_headNavItemBottomLink.menuIconText.getData()}</span></a>
+                                                        </div>
+                                                        </#list>
+                                                    </#if>
+                                                </div>
+                                            </footer>
+                                        </section>
+                                    </div>
+                                </div>
+                                    <#elseif cur_headNavItem.menuType.getData() == 'LINK'>
+                                </div>
+                                    <#elseif cur_headNavItem.menuType.getData() == 'CERAMICS'>
+                                        <span class="arrow"></span>
+                                </div>
+                                
+                                <div id="about-us-menu-${cur_headNavItem?index}" class="js-menu-collapse dropdown-menu mega-menu"  aria-labelledby="toggle-news-menu">
+                                    <div class="wrapper">
+                                        <section>
+                                            <div class="container">
+                                                <div class="row row-flex">
+                                                    <div class="main-content col-12 col-xl-12">
+                                                        <div class="wrapper">
+
+                                                            <ul class="row row-flex">
+                                                            <#list cur_headNavItem.menuSub.getSiblings() as cur_subLinks>
+                                                                <li class="col-12 col-sm-6 col-xl-3">
+                                                                    <div class="collection-list-item">
+                                                                    <#assign ceramicsLinkUrl = globalCacheManager.parseLinkURL(request, cur_subLinks.menuSubUrl.getData())>
+                                                                        <a class="collection" href="${ceramicsLinkUrl}" target="${globalCacheManager.getLinkTarget(ceramicsLinkUrl)}">${cur_subLinks.menuSubText.getData()}</a>
+                                                                    </div>
+                                                                </li>
+                                                            </#list>
+                                                        </ul>
+                                                    </div>
+                                              
+                                                </div>
+                                            </div>                                          
+                                                                                    
+                                        </section>
+                                    </div>
+                                </div>                              
+                                    </#if>
+                            </li>
+                        </#list>
+                            <#list promo.getSiblings() as promo_item>
+                            <li class="main-menu__item js-collapse-sm">
+                                <div class="link-wrapper">
+                                    <#assign
+                                        promoLink = globalCacheManager.parseLinkURL(request, promo_item.promoUrl.getData())
+                                    />
+                                    <a class="main-menu__link" href="${promoLink}" target="${globalCacheManager.getLinkTarget(promoLink)}">${promo_item.promoText.getData()}</a>
+                                </div>
+                            </li>
+                            </#list>
+                        </ul>
+                    </#if>
+                </nav>
+                <nav class="right-menu__wrapper">
+                    <ul class="right-menu__list js-h-search">
+                        <#if getterUtil.getBoolean(showSearch.getData())>
+                        <li class="right-menu__item">
+                            <#assign searchLink = globalCacheManager.parseLinkURL(request, globalCacheManager.translate(locale, "/search")) />
+                            <a href="${searchLink}" target="${globalCacheManager.getLinkTarget(searchLink)}" class="right-menu__link" title="${globalCacheManager.translate(locale, "Search")}">
+                            <i class="icon-search-24"></i>
+                            </a>
+                        </li>
+                        </#if>
+                        <#if getterUtil.getBoolean(showCart.getData()) && hasCommerce>
+                        <li class="right-menu__item js-h-cart">
+                            <#assign cartLink = globalCacheManager.getEcommerceURL(request, "/checkout/cart") />
+                            <a href="${cartLink}" class="right-menu__link" title="${globalCacheManager.translate(locale, "Go to cart")}">
+                                <span class="items-cart">-</span>
+                                <i class="icon-cart-24"></i>
+                            </a>
+                        </li>
+                        </#if>
+                        <li class="right-menu__item js-h-hamburger menu-trigger">
+                            <a href="javascript:void(0)" data-target="main-menu-collapse" class="right-menu__link">
+                            <i class="icon-menu-24"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+    </section>
+    <div class="r-modal main-menu-collapse">
+        <div class="close-menu">
+            <div class="wrapper">
+                <a href="javascript:void(0)" class="js-close icon-cross-24"></a>
+            </div>
+        </div>
+        <div class="r-modal__wrapper">
+        </div>
+    </div>
+    
+    <#if cc_Map?? && cc_Map?has_content>
+    <div class="r-modal country-menu-collapse">
+        <div class="close-menu">
+            <div class="wrapper">
+                <a href="javascript:void(0)" class="js-close icon-cross-24"></a>
+            </div>
+        </div>
+        <div class="r-modal__wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2>${globalCacheManager.translate(locale, "Select your country")}</h2>
+                    </div>
+                </div>
+                <div class="row row-flex" id="continent-parent">
+                
+                    <#list cc_Map as continent>
+                        <#assign contCountries = continent.countries! />
+                        <#assign contName = continent.continentLabel! />
+                        <#assign contCollapse = continent.collapse! />
+                        
+                        <#if contCountries?? && contCountries?has_content>
+                        <div class="js-collapse-sm col-xs-12 col-xl-2">
+                            <#if contName?? && contName?has_content>
+                            <h3>
+                                <a href="#">                                
+                                ${contName}
+                                </a>
+                                <span class="arrow"></span>
+                            </h3>
+                            </#if>
+                            <div id="collapse-${contCollapse}" class="js-menu-collapse collapse">
+                                <ul>
+                                <#list contCountries?sort_by("label") as country>
+                                    <#if country.label?? && country.label?has_content>
+                                    <li>
+                                        <#if country.url?? && country.url?has_content>
+                                            <a href="${country.url}">${country.label}</a>
+                                        <#else>
+                                            <a href="#">${country.label}</a>
+                                        </#if>
+                                    </li>
+                                    </#if>
+                                </#list>
+                                </ul>
+                            </div>
+                        </div>
+                        </#if>
+                    </#list>
+                    <!-- this div ends the country selector -->
+                </div>
+            </div>
+        </div>
+    </div>
+    </#if>
+    
+</div>
+
+<#if getterUtil.getBoolean(showPrivate.getData()) && themeDisplay.isSignedIn()>    
+    <div class="js-submenu">
+        <div class="user-menu-mobile js-collapse-sm white-theme">
+            <div class="background-grow">
+                <div class="user-link-wrapper">
+                    <#assign cur_User = themeDisplay.getUser() />
+                    <#assign pLink = profile_url />
+                    <a class="user__link" href="${pLink}">
+                        <span>${cur_User.getFirstName()} ${cur_User.getLastName()[0]}. <span class="submenu-position"></span>
+                        </span>
+                    </a>
+                    <span aria-expanded="false" class="arrow collapsed" data-parent=".user-menu-mobile" data-target="#user-menu-collapse" data-toggle="collapse"></span>
+                </div>
+                <div aria-labelledby="toggle-user-menu" class="js-menu-collapse collapse" id="user-menu-collapse">
+                    <div class="wrapper">
+                        <ul>
+                            <#list profile_layouts as userLayout>
+                            <li>
+                                <#assign layoutLink = userLayout.url />
+                                <a href="${layoutLink}">${userLayout.label}</a>
+                            </li>
+                            </#list>
+                            <#assign outLink = logout_url />
+                            <li class="user-item"><a class="user-logout icon-logout-18" href="${outLink}"><span>${globalCacheManager.translate(locale, "Log out")}</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</#if>
+
+</header>
+
+<#if promoBanner?? && getterUtil.getBoolean(promoBanner.showPromoBanner.getData()) >
+
+    <#if promoBanner.promoBannerText.getData()?? && promoBanner.promoBannerText.getData()?has_content >
+        <div class="js-submenu promoSubmenu">
+            <section class="promomenu-section">
+                <div class="background-grow">
+                    <div class="main-nav js-main-nav">
+                        <p class="promomenu-text">${promoBanner.promoBannerText.getData()}
+                        <#if promoBanner.promoBannerHTML.getData()?? && promoBanner.promoBannerHTML.getData()?has_content >
+                            <a class="promomenu-link" data-toggle="modal" data-target="#promoBannerDisp" href="#">
+                                <img class="promomenu-info" src="${themeDisplay.getPathThemeImages()}/icons/info-18white.svg" alt="${globalCacheManager.translate(locale, "Promotion info")}">
+                            </a>
+                        </#if>
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <#if promoBanner.promoBannerHTML.getData()?? && promoBanner.promoBannerHTML.getData()?has_content >
+        <div class="lightbox-wrapper">
+            <div class="modal fade modal-lightbox" id="promoBannerDisp" tabindex="-1" role="dialog" aria-labelledby=""
+                style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document" style="top: 20%;">
+                    <div class="container">
+                        <div class="close-menu">
+                            <div class="wrapper">
+                                <a role="button" data-dismiss="modal" id="promoBannerDisp" class="js-close icon-cross-24"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="r-modal__wrapper">
+                        <div class="container">
+                            <section style="background-color:white !important;" class="form-modal">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12 col-md-12 promomenu-modal">
+                                            ${promoBanner.promoBannerHTML.getData()}
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </#if>
+    </#if>
+
+</#if>
+
+</#if>
+
+
+
