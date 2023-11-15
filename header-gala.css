@@ -1139,6 +1139,18 @@ html .gala #slick-slide10 .container .row .col-12.col-md-7 .slider-content {
     border-bottom: 2px solid rgba(211, 211, 211, 0.8);
     padding-bottom: 100px;
 }
+.gala #portlet_ArticleText_INSTANCE_Cj6HG95GeuDl p:nth-of-type(2){
+    font-family: 'Max Offc Extrabold', Helvetica, Arial, sans-serif !important;
+    font-size: 22px !important;
+    line-height: 29px !important;
+    color: #000000 !important;
+}
+.gala #portlet_ArticleText_INSTANCE_Cj6HG95GeuDl p:nth-of-type(4){
+    font-family: 'Max Offc Extrabold', Helvetica, Arial, sans-serif !important;
+    font-size: 18px !important;
+    line-height: 24px !important;
+    color: #5498b1 !important;
+}
 /*CSS MAIN PAGE GALA 07-11*/
 
 .gala .slider-content p>strong{
