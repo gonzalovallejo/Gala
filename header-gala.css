@@ -380,6 +380,13 @@ html header.js-header .main-header__wrapper .main-menu__link::first-letter {
     font-family: 'Max Offc Extrabold', Helvetica, Arial, sans-serif !important;
     font-size: 16px;
 }
+
+.product-list-item a .text-wrap span{
+    text-transform: none;
+    color: #707172 !important;
+    font-family: 'Max Offc Extrabold', Helvetica, Arial, sans-serif !important;
+    font-size: 16px;
+    }
 /* Section .slider-content main sostenibilidad */
 html .gala .container .row .col-12.col-md-7 .slider-content {
     justify-content: flex-end !important;
@@ -1484,6 +1491,7 @@ html .gala .highlighted-slider-image-0-_HighlightedSlide_INSTANCE_2QRzIPM4ACmP_{
   .wrapper-text p::first-letter {
     text-transform: uppercase !important;
 }
+
 </style>
 
 <#global
@@ -2214,6 +2222,3 @@ html .gala .highlighted-slider-image-0-_HighlightedSlide_INSTANCE_2QRzIPM4ACmP_{
 </#if>
 
 </#if>
-
-
-
