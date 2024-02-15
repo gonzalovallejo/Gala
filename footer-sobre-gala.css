@@ -1,0 +1,138 @@
+<#--
+Web content templates are used to lay out the fields defined in a web
+content structure.
+
+Please use the left panel to quickly add commonly used variables.
+Autocomplete is also available and can be invoked by typing "${".
+-->
+<#global
+
+    cacheManager = cacheUtils.getCacheManager(themeDisplay.getScopeGroupId())
+
+/>
+
+
+<footer class="footer">
+	<div class="container">
+	
+		<!-- Lists of links -->
+		<div class="footer-main">
+		
+			<div class="row">
+				<div class="footer__lists" id="footer-aboutus">
+					<#if section.getSiblings()?has_content>
+					    <#assign
+					        sectionCounter = 0 
+					        nextSingle = false
+					    />
+					    <#assign footerId = 1/>
+						<#list section.getSiblings() as cur_section>
+						<#if cur_section.sectionSub?has_content && cur_section.sectionSub.getSiblings()?has_content && cur_section.sectionSub.getSiblings()[0].sectionSubLink.getData()?has_content >
+						<div class="js-collapse-wrapper col-12 col-md-3">
+							<h2>
+								<#assign flLink = cacheManager.parseLinkURL(request, cur_section.sectionLink.getData()) />
+								<a class="footer__link" href="${flLink}" target="${cur_section.sectionTarget.getData()}">
+								${cur_section.sectionText.getData()}
+								</a>
+								<span class="arrow"></span>
+							</h2>
+							<div class="collapseble-wrapper collapse" id="collapse-${footerId}">
+							<#assign footerId = footerId+1/>
+								<ul class="footer__list">
+								<#list cur_section.sectionSub.getSiblings() as cur_sectionSub>
+									<li class="footer__list-item">
+										<#assign flLink = cacheManager.parseLinkURL(request, cur_sectionSub.sectionSubLink.getData()) />
+										<a class ="footer__link" href="${flLink}" target="${cur_sectionSub.sectionSubTarget.getData()}">
+										${cur_sectionSub.sectionSubText.getData()}
+										</a>
+									</li>
+								</#list>
+								</ul>
+							</div>
+						</div>
+						<#else>
+						    <#if nextSingle = false >
+						<div class="col-12 col-md-3">
+						    </#if>
+							<h2>
+								<#assign flLink = cacheManager.parseLinkURL(request, cur_section.sectionLink.getData()) />
+								<a class="footer__link" href="${flLink}" target="${cur_section.sectionTarget.getData()}">
+								${cur_section.sectionText.getData()}
+								</a>
+							</h2>
+							<#if sectionCounter lt section.getSiblings()?size && section.getSiblings()[sectionCounter].sectionSub?has_content && section.getSiblings()[sectionCounter].sectionSub.getSiblings()[0].sectionSubLink.getData()?has_content >
+					    </div>
+					        <#elseif sectionCounter = section.getSiblings()?size >
+					    </div>
+					        <#else>
+					            <#assign nextSingle = true />
+					        </#if>
+					    </#if>
+					    <#assign sectionCounter = sectionCounter + 1 />
+						</#list>
+					</#if>
+				</div>		
+			</div>
+			
+		</div>
+		
+		<div class="footer-bottom">			
+			<div class="row row-flex row-reverse-md">
+			
+				<!-- Social Network -->
+				<div class="col-12 col-md-3">
+					<#if social.getSiblings()?has_content>
+					<div class="footer-social">
+						<ul class="footer-social__list">
+						<#list social.getSiblings() as cur_social>
+							<#if cur_social.socialIcon.getData()?? && cur_social.socialIcon.getData() != "">
+								<li class="footer-social__item">
+									<#assign fsLink = cacheManager.parseLinkURL(request, cur_social.socialLink.getData()) />
+									<a class="footer-social__link" href="${fsLink}" target="${cur_social.socialTarget.getData()}">
+										<img src="${cur_social.socialIcon.getData()}" />
+									</a>
+								</li>
+							</#if>
+						</#list>
+						</ul>
+					</div>
+					</#if>
+				</div>
+				
+				<!-- Instituitional -->
+				<div class="col-12 col-sm-9">
+					<div class="footer-institutional">
+					<#if link.getSiblings()?has_content>
+						<ul class="footer-institutional__list">
+						<#list link.getSiblings() as cur_link>
+							<li class="footer-institutional__item">
+								<#assign ilLink = cacheManager.parseLinkURL(request, cur_link.linkUrl.getData()) />
+								<a class="footer-institutional__link" href="${ilLink}" target="${cacheManager.getLinkTarget(ilLink)}">
+									${cur_link.linkText.getData()}
+								</a>
+							</li>
+						</#list>
+						</ul>
+					</#if>
+						<div class="footer-institutional__copy">
+							<p>${copyrightText.getData()}</p>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+				
+			<!-- Logo -->
+			<div class="footer-logo">
+			<#if logo.getData()?? && logo.getData() != "">
+				<#assign lgLink = cacheManager.parseLinkURL(request, logoLink.getData()) />
+				<a href="${lgLink}" target="${cacheManager.getLinkTarget(lgLink)}">
+					<img class="footer-logo__img" src="${logo.getData()}" />
+				</a>
+			</#if>
+			</div>
+			
+		</div>
+		
+	</div>
+</footer>
